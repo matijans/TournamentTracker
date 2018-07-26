@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IDataConnection.cs" />
     <Compile Include="MatchupEntryModel.cs" />
     <Compile Include="MatchupModel.cs" />
     <Compile Include="PersonModel.cs" />
@@ -47,6 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamModel.cs" />
     <Compile Include="TournamentModel.cs" />
+    <Compile Include="Utils\GlobalConfig.cs" />
+    <Compile Include="Utils\SqlConnector.cs" />
+    <Compile Include="Utils\TextConnector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
