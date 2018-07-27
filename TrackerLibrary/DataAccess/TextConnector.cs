@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrackerLibrary.Interfaces;
+using TrackerLibrary.Models;
 
-namespace TrackerLibrary.Utils
+namespace TrackerLibrary.DataAccess
 {
     public class TextConnector : IDataConnection
     {
