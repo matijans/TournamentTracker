@@ -7,12 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TrackerLibrary.Models;
 
-//@PlaceNumber int,
-//	@PlaceName nvarchar(50),
-//	@PrizeAmount money,
-//    @PrizePercentage float,
-//	@id int = 0 output
-
 namespace TrackerLibrary.DataAccess
 {
     public class SqlConnector : IDataConnection
@@ -90,6 +84,26 @@ namespace TrackerLibrary.DataAccess
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
+            }
+
+            return output;
+        }
+
+        public List<TeamModel> GetTeam_All()
+        {
+            List<TeamModel> output;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<TeamModel>("dbo.spTeams_GetAll").ToList();
+
+                foreach (TeamModel team in output)
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@TeamId", team.Id);
+
+                    team.TeamMembers = connection.Query<PersonModel>("dbo.spTeamMembers_GetByTeam", p, commandType: CommandType.StoredProcedure).ToList();
+                }
             }
 
             return output;
