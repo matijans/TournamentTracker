@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\IDataConnection.cs" />
     <Compile Include="DataAccess\TextConnectorProcessor.cs" />
+    <Compile Include="EmailLogic.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Models\MatchupEntryModel.cs" />
     <Compile Include="Models\MatchupModel.cs" />
